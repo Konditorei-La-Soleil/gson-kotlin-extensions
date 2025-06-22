@@ -1,4 +1,18 @@
-# gson-kotlin-extensions
+# gson-kotlin-extensions [![](https://jitpack.io/v/Konditorei-La-Soleil/gson-kotlin-extensions.svg)](https://jitpack.io/#Konditorei-La-Soleil/gson-kotlin-extensions)
+
+Kotlin extensions for [Gson](https://github.com/google/gson)
+
+`build.gradle.kts`
+
+```kotlin
+repositories {
+    maven(url = "https://jitpack.io")
+}
+
+dependencies {
+    implementation("com.github.Konditorei-La-Soleil:gson-kotlin-extensions:$version")
+}
+```
 
 ## Extensions
 
