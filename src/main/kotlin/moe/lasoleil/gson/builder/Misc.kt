@@ -20,43 +20,57 @@ inline fun <reified T> TypeToken(): TypeToken<T> = object : TypeToken<T>() {}
 fun JsonArray(vararg elements: JsonElement?): JsonArray =
     elements.toJsonArray()
 
-fun Array<out JsonElement?>.toJsonArray(): JsonArray =
-    JsonArray(size).apply {
-        this@toJsonArray.forEach(::add)
-    }
+fun Array<out JsonElement?>.toJsonArray(
+    target: JsonArray = JsonArray(size),
+): JsonArray {
+    forEach(target::add)
+    return target
+}
 
-fun Iterable<JsonElement?>.toJsonArray(): JsonArray =
-    (if (this is Collection<*>) JsonArray(size) else JsonArray()).apply {
-        this@toJsonArray.forEach(::add)
-    }
+fun Iterable<JsonElement?>.toJsonArray(
+    target: JsonArray = if (this is Collection<*>) JsonArray(size) else JsonArray(),
+): JsonArray {
+    forEach(target::add)
+    return target
+}
 
-fun Sequence<JsonElement?>.toJsonArray(): JsonArray =
-    JsonArray().apply {
-        this@toJsonArray.forEach(::add)
-    }
-
-fun Map<String, JsonElement?>.toJsonObject(): JsonObject =
-    JsonObject().apply {
-        this@toJsonObject.forEach(::add)
-    }
+fun Sequence<JsonElement?>.toJsonArray(
+    target: JsonArray = JsonArray(),
+): JsonArray {
+    forEach(target::add)
+    return target
+}
 
 fun JsonObject(vararg pairs: Pair<String, JsonElement?>) =
     pairs.toJsonObject()
 
-fun Array<out Pair<String, JsonElement?>>.toJsonObject() =
-    JsonObject().apply {
-        this@toJsonObject.forEach { add(it.first, it.second) }
-    }
+fun Map<String, JsonElement?>.toJsonObject(
+    target: JsonObject = JsonObject(),
+): JsonObject {
+    forEach { target.add(it.key, it.value) }
+    return target
+}
 
-fun Iterable<Pair<String, JsonElement?>>.toJsonObject() =
-    JsonObject().apply {
-        this@toJsonObject.forEach { add(it.first, it.second) }
-    }
+fun Array<out Pair<String, JsonElement?>>.toJsonObject(
+    target: JsonObject = JsonObject(),
+): JsonObject {
+    forEach { target.add(it.first, it.second) }
+    return target
+}
 
-fun Sequence<Pair<String, JsonElement?>>.toJsonObject() =
-    JsonObject().apply {
-        this@toJsonObject.forEach { add(it.first, it.second) }
-    }
+fun Iterable<Pair<String, JsonElement?>>.toJsonObject(
+    target: JsonObject = JsonObject(),
+): JsonObject {
+    forEach { target.add(it.first, it.second) }
+    return target
+}
+
+fun Sequence<Pair<String, JsonElement?>>.toJsonObject(
+    target: JsonObject = JsonObject(),
+): JsonObject {
+    forEach { target.add(it.first, it.second) }
+    return target
+}
 
 operator fun JsonArray.plus(other: JsonElement?) =
     JsonArray(size() + 1).apply {
