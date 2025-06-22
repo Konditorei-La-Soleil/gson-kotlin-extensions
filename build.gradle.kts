@@ -17,8 +17,22 @@ dependencies {
     compileOnly("com.squareup.okio:okio:3.10.2")
 
     testImplementation(kotlin("test"))
-    testImplementation("com.google.code.gson:gson:2.13.1")
+    testImplementation("com.google.code.gson:gson:2.8.9")
     testImplementation("com.squareup.okio:okio:3.10.2")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components.findByName("java"))
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = project.version.toString()
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
 }
 
 tasks.test {
