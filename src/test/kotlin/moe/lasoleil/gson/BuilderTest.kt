@@ -56,35 +56,35 @@ class BuilderTest {
 
         // DSL-based JSON creation
         val dslJson = moe.lasoleil.gson.builder.JsonObject {
-            "id"(123.json)
-            "name"("Alice".json)
-            "active"(true.json)
-            "rating"(4.8.json)
-            "initial"('A'.json)
+            "id"(123)
+            "name"("Alice")
+            "active"(true)
+            "rating"(4.8)
+            "initial"('A')
 
             "tags"("kotlin".json, "dsl".json, "json".json)
 
             "profile" {
-                "email"("alice@example.com".json)
-                "phone"("123-456-7890".json)
-                "age"(29.json)
-                "isVerified"(false.json)
+                "email"("alice@example.com")
+                "phone"("123-456-7890")
+                "age"(29)
+                "isVerified"(false)
 
                 "address" {
-                    "city"("Wonderland".json)
-                    "zip"("00000".json)
+                    "city"("Wonderland")
+                    "zip"("00000")
                 }
             }
 
             "skills".array {
-                add("Kotlin".json)
-                add("Java".json)
-                add("GSON".json)
-                add("Coroutines".json)
+                add("Kotlin")
+                add("Java")
+                add("GSON")
+                add("Coroutines")
             }
 
             // Simulate key removal
-            "deprecatedField"("to be removed".json)
+            "deprecatedField"("to be removed")
             "deprecatedField".dropKey()
         }
 

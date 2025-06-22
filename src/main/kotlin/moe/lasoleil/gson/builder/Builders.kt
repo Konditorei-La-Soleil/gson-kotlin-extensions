@@ -40,14 +40,30 @@ value class JsonObjectBuilder(private val root: JsonObject) {
         root.add(this, value)
     }
 
+    operator fun String.invoke(value: Boolean?) {
+        root.addProperty(this, value)
+    }
+
+    operator fun String.invoke(value: Number?) {
+        root.addProperty(this, value)
+    }
+
+    operator fun String.invoke(value: Char?) {
+        root.addProperty(this, value)
+    }
+
+    operator fun String.invoke(value: String?) {
+        root.addProperty(this, value)
+    }
+
     operator fun String.invoke(vararg values: JsonElement?) =
         invoke(values.toJsonArray())
 
     inline fun String.array(capacity: Int = 10, block: JsonArrayBuilder.() -> Unit) =
-        invoke(JsonArrayBuilder(capacity).apply(block))
+        invoke(JsonArray(capacity, block))
 
     inline operator fun String.invoke(block: JsonObjectBuilder.() -> Unit) =
-        invoke(JsonObjectBuilder(JsonObject()).apply(block).build())
+        invoke(JsonObject(block))
 
     fun String.value(): JsonElement? = root.get(this)
 
