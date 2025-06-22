@@ -22,7 +22,7 @@ inline fun Writer.json(): JsonWriter = JsonWriter(this)
 inline fun Appendable.writer(): Writer = Streams.writerForAppendable(this)
 
 @Throws(JsonIOException::class, JsonSyntaxException::class)
-fun JsonReader.parseJson(): JsonElement =
+inline fun JsonReader.parseJson(): JsonElement =
     JsonParser.parseReader(this)
 
 @Throws(JsonIOException::class, JsonSyntaxException::class)
