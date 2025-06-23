@@ -10,10 +10,8 @@ import com.google.gson.stream.JsonWriter
 import moe.lasoleil.gson.builder.typeToken
 import moe.lasoleil.gson.util.DEFAULT_GSON
 import moe.lasoleil.gson.util.reader
-import okio.BufferedSource
 import java.io.Reader
 import java.io.Writer
-import java.nio.charset.Charset
 
 inline fun Reader.json(gson: Gson = DEFAULT_GSON): JsonReader =
     gson.newJsonReader(this)
@@ -29,9 +27,6 @@ inline fun Reader.parseJson(): JsonElement =
 
 inline fun CharSequence.parseJson(): JsonElement =
     reader().parseJson()
-
-inline fun BufferedSource.parseJson(charset: Charset = Charsets.UTF_8): JsonElement =
-    inputStream().reader(charset).parseJson()
 
 inline fun <T> JsonWriter.write(value: T, typeAdapter: TypeAdapter<T>) {
     typeAdapter.write(this, value)
