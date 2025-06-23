@@ -17,7 +17,7 @@ inline val String.json get() = JsonPrimitive(this)
 
 inline fun <reified T> TypeToken(): TypeToken<T> = object : TypeToken<T>() {}
 
-fun JsonArray(vararg elements: JsonElement?): JsonArray =
+fun jsonArrayOf(vararg elements: JsonElement?): JsonArray =
     elements.toJsonArray()
 
 fun Array<out JsonElement?>.toJsonArray(
@@ -41,7 +41,7 @@ fun Sequence<JsonElement?>.toJsonArray(
     return target
 }
 
-fun JsonObject(vararg pairs: Pair<String, JsonElement?>) =
+fun jsonObjectOf(vararg pairs: Pair<String, JsonElement?>) =
     pairs.toJsonObject()
 
 fun Map<String, JsonElement?>.toJsonObject(
