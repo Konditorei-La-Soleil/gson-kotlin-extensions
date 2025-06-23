@@ -1,9 +1,13 @@
 package moe.lasoleil.gson
 
 import com.google.gson.JsonNull
+import moe.lasoleil.gson.builder.JsonArray
 import moe.lasoleil.gson.delegation.JsonObjectDelegation.Companion.delegate
 import moe.lasoleil.gson.builder.JsonObject
+import moe.lasoleil.gson.util.map
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 private val MY_OBJECT = JsonObject {
@@ -46,11 +50,11 @@ class AccessTest {
 
     @Test
     fun `readonly delegation`() {
-        val user by MY_OBJECT.delegate()
+        val user by MY_OBJECT.delegate().map { it!! }
         assertTrue { user.isJsonObject }
         assertTrue { user["id"].asInt == 12345 }
         assertTrue { user["name"].asString == "Alice" }
-        val profile by user.asJsonObject.delegate("profile")
+        val profile by user.asJsonObject.delegate("profile").map { it!! }
         assertTrue { profile.isJsonObject }
         assertTrue { profile["age"].asInt == 30 }
     }
@@ -59,9 +63,15 @@ class AccessTest {
     fun `readwrite delegation`() {
         val copied = MY_OBJECT.deepCopy()
         var tags by copied.delegate()
-        assertTrue { tags.isJsonArray }
-        tags.asJsonArray.remove(0)
+        assertTrue { tags!!.isJsonArray }
+        tags!!.asJsonArray.remove(0)
         assertTrue { copied["tags"].asJsonArray.size() == 2 }
+        tags = JsonArray {
+            add("kotlin")
+        }
+        assertEquals("kotlin", copied["tags"][0].asString)
+        tags = null
+        assertFalse { copied.has("tags") }
     }
 
 }

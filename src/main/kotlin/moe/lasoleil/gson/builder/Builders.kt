@@ -11,6 +11,9 @@ import kotlin.contracts.contract
 @DslMarker
 annotation class GsonBuilderDsl
 
+/**
+ * Builds a [JsonArray] with [block].
+ */
 @OptIn(ExperimentalContracts::class)
 inline fun JsonArray(capacity: Int = 10, block: JsonArrayBuilder.() -> Unit): JsonArray {
     contract {
@@ -23,6 +26,9 @@ inline fun JsonArray(capacity: Int = 10, block: JsonArrayBuilder.() -> Unit): Js
 
 private typealias JsonArrayBuilder = JsonArray
 
+/**
+ * Builds a [JsonObject] with [block].
+ */
 @OptIn(ExperimentalContracts::class)
 inline fun JsonObject(block: JsonObjectBuilder.() -> Unit): JsonObject {
     contract {
@@ -33,6 +39,11 @@ inline fun JsonObject(block: JsonObjectBuilder.() -> Unit): JsonObject {
     return builder.build()
 }
 
+/**
+ * Scope class for building a [JsonObject]
+ *
+ * @constructor should not be called manually
+ */
 @GsonBuilderDsl
 @JvmInline
 value class JsonObjectBuilder(private val root: JsonObject) {

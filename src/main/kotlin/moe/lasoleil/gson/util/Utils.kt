@@ -7,6 +7,13 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+/**
+ * Wrap of [Streams.writerForAppendable]
+ *
+ * @return a wrapped [Writer] of the receiver.
+ * If it's already a [Writer], returns itself.
+ * @see Streams.AppendableWriter
+ */
 inline fun Appendable.asWriter(): Writer =
     Streams.writerForAppendable(this)
 
