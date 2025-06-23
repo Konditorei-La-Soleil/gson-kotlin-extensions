@@ -1,6 +1,8 @@
 # gson-kotlin-extensions [![](https://jitpack.io/v/Konditorei-La-Soleil/gson-kotlin-extensions.svg)](https://jitpack.io/#Konditorei-La-Soleil/gson-kotlin-extensions)
 
-Kotlin extensions for [Gson](https://github.com/google/gson), including adaptations for [OkHttp](https://github.com/square/okhttp)
+Kotlin extensions for [Gson](https://github.com/google/gson), including adaptations for following external libraries:
+- [OkHttp](https://github.com/square/okhttp)
+- [Netty](https://github.com/netty/netty)
 
 Note: now this library is **unstable**. All APIs might be changed/renamed/removed.
 
