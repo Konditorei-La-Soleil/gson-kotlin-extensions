@@ -6,9 +6,9 @@ import com.google.gson.JsonElement
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.ByteBufInputStream
 import io.netty.buffer.ByteBufOutputStream
-import moe.lasoleil.gson.parser.fromJson
-import moe.lasoleil.gson.parser.parseJson
-import moe.lasoleil.gson.parser.writeJson
+import moe.lasoleil.gson.fromJson
+import moe.lasoleil.gson.parseJson
+import moe.lasoleil.gson.writeJson
 import moe.lasoleil.gson.util.DEFAULT_GSON
 import java.nio.charset.Charset
 

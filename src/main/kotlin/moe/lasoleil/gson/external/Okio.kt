@@ -3,9 +3,9 @@ package moe.lasoleil.gson.external
 
 import com.google.gson.Gson
 import com.google.gson.JsonElement
-import moe.lasoleil.gson.parser.fromJson
-import moe.lasoleil.gson.parser.parseJson
-import moe.lasoleil.gson.parser.writeJson
+import moe.lasoleil.gson.fromJson
+import moe.lasoleil.gson.parseJson
+import moe.lasoleil.gson.writeJson
 import moe.lasoleil.gson.util.DEFAULT_GSON
 import okio.BufferedSink
 import okio.BufferedSource

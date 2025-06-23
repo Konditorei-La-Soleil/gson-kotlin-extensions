@@ -1,12 +1,25 @@
-package moe.lasoleil.gson.parser
+@file:Suppress("NOTHING_TO_INLINE")
+package moe.lasoleil.gson
 
 import com.google.gson.Gson
 import com.google.gson.JsonElement
+import com.google.gson.JsonParser
 import com.google.gson.stream.JsonReader
-import moe.lasoleil.gson.builder.typeToken
 import moe.lasoleil.gson.util.DEFAULT_GSON
 import moe.lasoleil.gson.util.reader
 import java.io.Reader
+
+inline fun Reader.json(gson: Gson = DEFAULT_GSON): JsonReader =
+    gson.newJsonReader(this)
+
+inline fun JsonReader.parseJson(): JsonElement =
+    JsonParser.parseReader(this)
+
+inline fun Reader.parseJson(): JsonElement =
+    JsonParser.parseReader(this)
+
+inline fun CharSequence.parseJson(): JsonElement =
+    reader().parseJson()
 
 inline fun <reified T> Gson.fromJson(source: JsonElement): T =
     fromJson(source, typeToken<T>().type)

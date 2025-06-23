@@ -2,7 +2,7 @@ package moe.lasoleil.gson.external
 
 import com.google.gson.Gson
 import com.google.gson.JsonElement
-import moe.lasoleil.gson.parser.parseJson
+import moe.lasoleil.gson.parseJson
 import moe.lasoleil.gson.util.DEFAULT_GSON
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType

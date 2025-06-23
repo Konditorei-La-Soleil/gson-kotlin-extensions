@@ -1,7 +1,8 @@
-package moe.lasoleil.gson.access
+package moe.lasoleil.gson.delegation
 
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import moe.lasoleil.gson.set
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

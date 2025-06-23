@@ -1,7 +1,7 @@
 package moe.lasoleil.gson.external
 
-import moe.lasoleil.gson.access.get
 import moe.lasoleil.gson.builder.JsonObject
+import moe.lasoleil.gson.get
 import okhttp3.MediaType
 import okhttp3.ResponseBody.Companion.asResponseBody
 import org.junit.jupiter.api.Test

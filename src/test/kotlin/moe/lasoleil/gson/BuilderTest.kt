@@ -3,7 +3,6 @@ package moe.lasoleil.gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
-import moe.lasoleil.gson.builder.json
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

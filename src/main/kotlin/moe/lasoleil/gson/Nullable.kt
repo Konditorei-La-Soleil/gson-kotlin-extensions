@@ -1,5 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
-package moe.lasoleil.gson.access
+
+package moe.lasoleil.gson
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement

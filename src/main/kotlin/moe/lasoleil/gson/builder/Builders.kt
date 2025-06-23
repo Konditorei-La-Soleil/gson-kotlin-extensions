@@ -3,6 +3,7 @@ package moe.lasoleil.gson.builder
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import moe.lasoleil.gson.toJsonArray
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract

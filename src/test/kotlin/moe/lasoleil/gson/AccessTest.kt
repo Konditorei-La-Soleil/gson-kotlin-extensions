@@ -1,10 +1,8 @@
 package moe.lasoleil.gson
 
 import com.google.gson.JsonNull
-import moe.lasoleil.gson.access.JsonObjectDelegation.Companion.delegate
-import moe.lasoleil.gson.access.get
+import moe.lasoleil.gson.delegation.JsonObjectDelegation.Companion.delegate
 import moe.lasoleil.gson.builder.JsonObject
-import moe.lasoleil.gson.builder.json
 import org.junit.jupiter.api.Test
 import kotlin.test.assertTrue
 
