@@ -1,6 +1,8 @@
 # gson-kotlin-extensions [![](https://jitpack.io/v/Konditorei-La-Soleil/gson-kotlin-extensions.svg)](https://jitpack.io/#Konditorei-La-Soleil/gson-kotlin-extensions)
 
-Kotlin extensions for [Gson](https://github.com/google/gson)
+Kotlin extensions for [Gson](https://github.com/google/gson), including adaptations for [OkHttp](https://github.com/square/okhttp)
+
+Note: now this library is **unstable**. All APIs might be changed/renamed/removed.
 
 `build.gradle.kts`
 

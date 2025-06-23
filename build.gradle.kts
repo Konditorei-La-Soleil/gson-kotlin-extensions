@@ -14,11 +14,11 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     compileOnly("com.google.code.gson:gson:2.8.9")
     // https://mvnrepository.com/artifact/com.squareup.okio/okio
-    compileOnly("com.squareup.okio:okio:3.10.2")
+    compileOnly("com.squareup.okhttp3:okhttp:4.12.0")
 
     testImplementation(kotlin("test"))
     testImplementation("com.google.code.gson:gson:2.8.9")
-    testImplementation("com.squareup.okio:okio:3.10.2")
+    testImplementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
 
 publishing {
