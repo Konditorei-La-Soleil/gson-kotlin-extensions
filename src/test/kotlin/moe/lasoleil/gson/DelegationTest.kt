@@ -46,7 +46,7 @@ private val MY_OBJECT = JsonObject {
 }
 
 
-class AccessTest {
+class DelegationTest {
 
     @Test
     fun `readonly delegation`() {
