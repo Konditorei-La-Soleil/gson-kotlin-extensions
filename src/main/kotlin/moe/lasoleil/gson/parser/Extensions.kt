@@ -1,6 +1,7 @@
 @file:Suppress("NOTHING_TO_INLINE")
 package moe.lasoleil.gson.parser
 
+import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonIOException
 import com.google.gson.JsonParser
@@ -9,17 +10,21 @@ import com.google.gson.TypeAdapter
 import com.google.gson.internal.Streams
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
+import moe.lasoleil.gson.util.DEFAULT_GSON
 import moe.lasoleil.gson.util.reader
 import okio.BufferedSource
 import java.io.Reader
 import java.io.Writer
 import java.nio.charset.Charset
 
-inline fun Reader.json(): JsonReader = JsonReader(this)
+inline fun Reader.json(gson: Gson = DEFAULT_GSON): JsonReader =
+    gson.newJsonReader(this)
 
-inline fun Writer.json(): JsonWriter = JsonWriter(this)
+inline fun Writer.json(gson: Gson = DEFAULT_GSON): JsonWriter =
+    gson.newJsonWriter(this)
 
-inline fun Appendable.writer(): Writer = Streams.writerForAppendable(this)
+inline fun Appendable.asWriter(): Writer =
+    Streams.writerForAppendable(this)
 
 @Throws(JsonIOException::class, JsonSyntaxException::class)
 inline fun JsonReader.parseJson(): JsonElement =

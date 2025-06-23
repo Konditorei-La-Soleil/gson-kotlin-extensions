@@ -1,5 +1,6 @@
 package moe.lasoleil.gson
 
+import com.google.gson.JsonNull
 import moe.lasoleil.gson.access.JsonObjectDelegation.Companion.delegate
 import moe.lasoleil.gson.access.get
 import moe.lasoleil.gson.builder.JsonObject
@@ -20,7 +21,7 @@ private val MY_OBJECT = JsonObject {
             "gender"('F'.json)
             "contact" {
                 "email"("alice@example.com".json)
-                "phone"(null)  // null JSON value
+                "phone"(JsonNull.INSTANCE)  // null JSON value
             }
         }
     }

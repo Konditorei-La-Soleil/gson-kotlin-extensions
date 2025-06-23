@@ -23,7 +23,7 @@ dependencies {
 
 ## Wrapped methods
 
-- `Appendable.writer(): Writer`
+- `Appendable.asWriter(): Writer`
 - `Reader.json(): JsonReader`
 - `Writer.json(): JsonWriter`
 - `JsonReader.parseJson(): JsonElement`
