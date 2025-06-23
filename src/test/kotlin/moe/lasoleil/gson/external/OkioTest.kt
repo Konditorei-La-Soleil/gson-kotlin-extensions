@@ -11,6 +11,8 @@ private val GBK = Charset.forName("gbk")
 
 class OkioTest {
 
+    private data class PairIJ(val a: Int, val b: Long)
+
     @Test
     fun `test JsonElement write and parse`() {
         val source = Buffer().apply {
@@ -27,8 +29,6 @@ class OkioTest {
 
     @Test
     fun `test data class write and parse`() {
-        data class PairIJ(val a: Int, val b: Long)
-
         val source = Buffer().apply {
             writeJson(PairIJ(514, 495))
         }
