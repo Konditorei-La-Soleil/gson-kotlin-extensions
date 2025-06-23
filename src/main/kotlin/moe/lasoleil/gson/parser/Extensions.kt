@@ -10,6 +10,7 @@ import com.google.gson.stream.JsonWriter
 import moe.lasoleil.gson.builder.typeToken
 import moe.lasoleil.gson.util.DEFAULT_GSON
 import moe.lasoleil.gson.util.reader
+import java.io.Flushable
 import java.io.Reader
 import java.io.Writer
 
@@ -34,6 +35,7 @@ inline fun <T> JsonWriter.write(value: T, typeAdapter: TypeAdapter<T>) {
 
 inline fun Appendable.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_GSON) {
     gson.toJson(jsonElement, this@writeJson)
+    if (this is Flushable) flush()
 }
 
 inline fun JsonWriter.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_GSON) {
