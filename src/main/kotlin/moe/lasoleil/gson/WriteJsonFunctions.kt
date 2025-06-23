@@ -22,6 +22,7 @@ inline fun JsonWriter.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_
 
 inline fun <reified T> Appendable.writeJson(value: T, gson: Gson = DEFAULT_GSON) {
     gson.toJson(value, typeToken<T>().type, this@writeJson)
+    if (this is Flushable) flush()
 }
 
 inline fun <reified T> JsonWriter.writeJson(value: T, gson: Gson = DEFAULT_GSON) {
