@@ -15,7 +15,7 @@ inline val Char.json get() = JsonPrimitive(this)
 
 inline val String.json get() = JsonPrimitive(this)
 
-inline fun <reified T> TypeToken(): TypeToken<T> = object : TypeToken<T>() {}
+inline fun <reified T> typeToken(): TypeToken<T> = object : TypeToken<T>() {}
 
 fun jsonArrayOf(vararg elements: JsonElement?): JsonArray =
     elements.toJsonArray()

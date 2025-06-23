@@ -10,6 +10,7 @@ import com.google.gson.TypeAdapter
 import com.google.gson.internal.Streams
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
+import moe.lasoleil.gson.builder.typeToken
 import moe.lasoleil.gson.util.DEFAULT_GSON
 import moe.lasoleil.gson.util.reader
 import okio.BufferedSource
@@ -26,20 +27,32 @@ inline fun Writer.json(gson: Gson = DEFAULT_GSON): JsonWriter =
 inline fun Appendable.asWriter(): Writer =
     Streams.writerForAppendable(this)
 
-@Throws(JsonIOException::class, JsonSyntaxException::class)
 inline fun JsonReader.parseJson(): JsonElement =
     JsonParser.parseReader(this)
 
-@Throws(JsonIOException::class, JsonSyntaxException::class)
 inline fun Reader.parseJson(): JsonElement =
     JsonParser.parseReader(this)
 
-@Throws(JsonSyntaxException::class)
 inline fun CharSequence.parseJson(): JsonElement =
     reader().parseJson()
 
-@Throws(JsonIOException::class, JsonSyntaxException::class)
 inline fun BufferedSource.parseJson(charset: Charset = Charsets.UTF_8): JsonElement =
     inputStream().reader(charset).parseJson()
 
 inline fun <T> JsonWriter.write(value: T, typeAdapter: TypeAdapter<T>) = typeAdapter.write(this, value)
+
+inline fun Appendable.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_GSON) {
+    gson.toJson(jsonElement, this@writeJson)
+}
+
+inline fun JsonWriter.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_GSON) {
+    gson.toJson(jsonElement, this@writeJson)
+}
+
+inline fun <reified T> Appendable.writeJson(value: T, gson: Gson = DEFAULT_GSON) {
+    gson.toJson(value, typeToken<T>().type, this@writeJson)
+}
+
+inline fun <reified T> JsonWriter.writeJson(value: T, gson: Gson = DEFAULT_GSON) {
+    gson.toJson(value, typeToken<T>().type, this@writeJson)
+}
