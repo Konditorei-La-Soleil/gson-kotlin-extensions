@@ -3,9 +3,7 @@ package moe.lasoleil.gson.parser
 
 import com.google.gson.Gson
 import com.google.gson.JsonElement
-import com.google.gson.JsonIOException
 import com.google.gson.JsonParser
-import com.google.gson.JsonSyntaxException
 import com.google.gson.TypeAdapter
 import com.google.gson.internal.Streams
 import com.google.gson.stream.JsonReader
@@ -39,7 +37,9 @@ inline fun CharSequence.parseJson(): JsonElement =
 inline fun BufferedSource.parseJson(charset: Charset = Charsets.UTF_8): JsonElement =
     inputStream().reader(charset).parseJson()
 
-inline fun <T> JsonWriter.write(value: T, typeAdapter: TypeAdapter<T>) = typeAdapter.write(this, value)
+inline fun <T> JsonWriter.write(value: T, typeAdapter: TypeAdapter<T>) {
+    typeAdapter.write(this, value)
+}
 
 inline fun Appendable.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_GSON) {
     gson.toJson(jsonElement, this@writeJson)
