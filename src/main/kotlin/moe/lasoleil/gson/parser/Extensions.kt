@@ -5,7 +5,6 @@ import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import com.google.gson.TypeAdapter
-import com.google.gson.internal.Streams
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import moe.lasoleil.gson.builder.typeToken
@@ -21,9 +20,6 @@ inline fun Reader.json(gson: Gson = DEFAULT_GSON): JsonReader =
 
 inline fun Writer.json(gson: Gson = DEFAULT_GSON): JsonWriter =
     gson.newJsonWriter(this)
-
-inline fun Appendable.asWriter(): Writer =
-    Streams.writerForAppendable(this)
 
 inline fun JsonReader.parseJson(): JsonElement =
     JsonParser.parseReader(this)
