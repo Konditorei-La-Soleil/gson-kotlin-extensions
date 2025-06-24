@@ -18,6 +18,8 @@ dependencies {
 }
 ```
 
+Please view `test` package for more examples.
+
 ## Extensions
 
 - Non-threadsafe `Reader` of a `CharSequence`
