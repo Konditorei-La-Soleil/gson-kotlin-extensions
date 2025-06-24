@@ -44,4 +44,22 @@ class OkHttpTest {
         assertThrows<EOFException> { responseBody.source().readByte() }
     }
 
+    private data class Student(
+        val id: String,
+        val grade: Int,
+    )
+
+    @Test
+    fun `JSON response body for data class test`() {
+        val buffer = okio.Buffer()
+        buffer.writeJson(JsonObject {
+            "id"("001")
+            "grade"(6)
+        })
+        val responseBody = buffer.asResponseBody(contentType = MediaType.Json, contentLength = buffer.size)
+        val student = responseBody.parseJson<Student>()
+        assertEquals("001", student.id)
+        assertEquals(6, student.grade)
+    }
+
 }
