@@ -42,6 +42,7 @@ fun Map<String, JsonElement?>.toJsonObject(
     return target
 }
 
+@JvmName("toJsonObjectWithEntries")
 fun Array<out Map.Entry<String, JsonElement?>>.toJsonObject(
     target: JsonObject = JsonObject(),
 ): JsonObject {
@@ -49,6 +50,7 @@ fun Array<out Map.Entry<String, JsonElement?>>.toJsonObject(
     return target
 }
 
+@JvmName("toJsonObjectWithEntries")
 fun Iterable<Map.Entry<String, JsonElement?>>.toJsonObject(
     target: JsonObject = JsonObject(),
 ): JsonObject {
@@ -56,6 +58,7 @@ fun Iterable<Map.Entry<String, JsonElement?>>.toJsonObject(
     return target
 }
 
+@JvmName("toJsonObjectWithEntries")
 fun Sequence<Map.Entry<String, JsonElement?>>.toJsonObject(
     target: JsonObject = JsonObject(),
 ): JsonObject {

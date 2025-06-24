@@ -100,8 +100,8 @@ operator fun JsonArray.plusAssign(other: JsonArray) = addAll(other)
  */
 operator fun JsonObject.plus(other: JsonObject) =
     JsonObject().also {
-        this.entrySet().toJsonObject(it)
-        other.entrySet().toJsonObject(it)
+        it.entrySet() += this.entrySet()
+        it.entrySet() += other.entrySet()
     }
 
 /**
@@ -110,5 +110,5 @@ operator fun JsonObject.plus(other: JsonObject) =
  * This method shallow copies the elements from original [JsonObject] without modifying them.
  */
 operator fun JsonObject.plusAssign(other: JsonObject) {
-    other.entrySet().toJsonObject(this)
+    this.entrySet() += other.entrySet()
 }
