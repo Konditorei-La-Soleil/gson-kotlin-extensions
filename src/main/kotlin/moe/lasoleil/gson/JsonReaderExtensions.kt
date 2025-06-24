@@ -1,8 +1,6 @@
 package moe.lasoleil.gson
 
 import com.google.gson.stream.JsonReader
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
 
 inline fun JsonReader.obj(block: () -> Unit) {
     try {

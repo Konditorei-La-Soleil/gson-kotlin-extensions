@@ -2,8 +2,6 @@
 package moe.lasoleil.gson
 
 import com.google.gson.stream.JsonWriter
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
 
 inline fun JsonWriter.obj(block: () -> Unit) {
     try {
