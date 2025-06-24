@@ -11,22 +11,38 @@ import java.io.Writer
 inline fun Writer.json(gson: Gson = DEFAULT_GSON): JsonWriter =
     gson.newJsonWriter(this)
 
-inline fun Appendable.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_GSON) {
-    gson.toJson(jsonElement, this@writeJson)
-    if (this is Flushable) flush()
+inline fun Appendable.writeJson(
+    jsonElement: JsonElement?,
+    gson: Gson = DEFAULT_GSON,
+    flush: Boolean = true,
+) {
+    gson.toJson(jsonElement, this)
+    if (flush && this is Flushable) flush()
 }
 
-inline fun JsonWriter.writeJson(jsonElement: JsonElement?, gson: Gson = DEFAULT_GSON) {
-    gson.toJson(jsonElement, this@writeJson)
-    flush()
+inline fun JsonWriter.writeJson(
+    jsonElement: JsonElement?,
+    gson: Gson = DEFAULT_GSON,
+    flush: Boolean = true,
+) {
+    gson.toJson(jsonElement, this)
+    if (flush) flush()
 }
 
-inline fun <reified T> Appendable.writeJson(value: T, gson: Gson = DEFAULT_GSON) {
-    gson.toJson(value, typeToken<T>().type, this@writeJson)
-    if (this is Flushable) flush()
+inline fun <reified T> Appendable.writeJson(
+    value: T,
+    gson: Gson = DEFAULT_GSON,
+    flush: Boolean = true,
+) {
+    gson.toJson(value, typeToken<T>().type, this)
+    if (flush && this is Flushable) flush()
 }
 
-inline fun <reified T> JsonWriter.writeJson(value: T, gson: Gson = DEFAULT_GSON) {
-    gson.toJson(value, typeToken<T>().type, this@writeJson)
-    flush()
+inline fun <reified T> JsonWriter.writeJson(
+    value: T,
+    gson: Gson = DEFAULT_GSON,
+    flush: Boolean = true,
+) {
+    gson.toJson(value, typeToken<T>().type, this)
+    if (flush) flush()
 }
