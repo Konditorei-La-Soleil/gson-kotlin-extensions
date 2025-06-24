@@ -56,9 +56,9 @@ inline operator fun JsonObject.set(key: String, value: String?) = addProperty(ke
  * This method shallow copies the elements from original [JsonArray] without modifying them.
  */
 operator fun JsonElement.plus(other: JsonArray) =
-    JsonArray(1 + other.size()).apply {
-        add(this@plus)
-        addAll(other)
+    JsonArray(1 + other.size()).also {
+        it += this
+        it += other
     }
 
 /**
@@ -67,9 +67,9 @@ operator fun JsonElement.plus(other: JsonArray) =
  * This method shallow copies the elements from original [JsonArray] without modifying them.
  */
 operator fun JsonArray.plus(other: JsonElement?) =
-    JsonArray(size() + 1).apply {
-        addAll(this@plus)
-        add(other)
+    JsonArray(size() + 1).also {
+        it += this
+        it += other
     }
 
 /**
@@ -78,15 +78,15 @@ operator fun JsonArray.plus(other: JsonElement?) =
  * This method shallow copies the elements from original [JsonArray] without modifying them.
  */
 operator fun JsonArray.plus(other: JsonArray) =
-    JsonArray(size() + other.size()).apply {
-        addAll(this@plus)
-        addAll(other)
+    JsonArray(size() + other.size()).also {
+        it += this
+        it += other
     }
 
 /**
  * Wrap of [JsonArray.add]
  */
-operator fun JsonArray.plusAssign(other: JsonElement) = add(other)
+operator fun JsonArray.plusAssign(other: JsonElement?) = add(other)
 
 /**
  * Wrap of [JsonArray.addAll]
@@ -99,10 +99,9 @@ operator fun JsonArray.plusAssign(other: JsonArray) = addAll(other)
  * This method shallow copies the elements from original [JsonObject] without modifying them.
  */
 operator fun JsonObject.plus(other: JsonObject) =
-    JsonObject().apply {
-        val entries = entrySet()
-        entries.addAll(this@plus.entrySet())
-        entries.addAll(other.entrySet())
+    JsonObject().also {
+        this.entrySet().toJsonObject(it)
+        other.entrySet().toJsonObject(it)
     }
 
 /**
@@ -111,5 +110,5 @@ operator fun JsonObject.plus(other: JsonObject) =
  * This method shallow copies the elements from original [JsonObject] without modifying them.
  */
 operator fun JsonObject.plusAssign(other: JsonObject) {
-    other.entrySet().forEach { add(it.key, it.value) }
+    other.entrySet().toJsonObject(this)
 }

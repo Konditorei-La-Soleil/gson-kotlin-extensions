@@ -42,6 +42,27 @@ fun Map<String, JsonElement?>.toJsonObject(
     return target
 }
 
+fun Array<out Map.Entry<String, JsonElement?>>.toJsonObject(
+    target: JsonObject = JsonObject(),
+): JsonObject {
+    forEach { target.add(it.key, it.value) }
+    return target
+}
+
+fun Iterable<Map.Entry<String, JsonElement?>>.toJsonObject(
+    target: JsonObject = JsonObject(),
+): JsonObject {
+    forEach { target.add(it.key, it.value) }
+    return target
+}
+
+fun Sequence<Map.Entry<String, JsonElement?>>.toJsonObject(
+    target: JsonObject = JsonObject(),
+): JsonObject {
+    forEach { target.add(it.key, it.value) }
+    return target
+}
+
 fun Array<out Pair<String, JsonElement?>>.toJsonObject(
     target: JsonObject = JsonObject(),
 ): JsonObject {
